@@ -1,0 +1,147 @@
+html{
+  scroll-behavior: smooth;
+}
+#logo{
+  font-family: 'Showcard Gothic', cursive;
+  font-size: 25pt;
+  color:#6c6c6c;
+  margin:12px 40px;
+  float: left;
+}
+.center{
+  margin:50px 35% auto 35%;
+  width: 20%;
+}
+#auth{
+float: right;
+margin:22px 10px;
+font-size: 20pt;
+}
+#submenu{
+  display: none;
+  width: 200px;
+  margin-left: -50px;
+  z-index: 999;
+}
+.main-menu ul li{
+list-style-type: none;
+}
+#auth a{
+  text-decoration: none;
+  color:#6c6c6c;
+  margin-right: 20px;
+}
+#auth a:hover{
+  color:#aaa;
+  transition-duration: 0.2s;
+}
+a{
+  text-decoration: none;
+  color: black;
+  font-family: 'Inria Serif', serif;
+}
+body{
+  background-color: #e4dada;
+}
+.head{
+  height: 90px;
+}
+.main-menu{
+  height:40px;
+  width: 100%;
+  text-align: center;
+}
+.mm-a{
+  font-family: 'Courier Prime', monospace;
+  color:#6c6c6c;
+  font-size: 17pt;
+  padding: 10px 100px;
+  margin: 0px 40px;
+}
+.mm-a:hover{
+  background-color: #D5AEAE;
+  color: #ccffcc;
+  transition-duration: .5s;
+}
+#about a{
+  color: #ccffcc;
+  display: block;
+  width: 200px;
+  background-color: #D5AEBE;
+  font-size:15pt;
+  padding: 10px;
+}
+#about a:hover{
+  transform: scale(1.1);
+
+  transition-duration: 0.2s;
+  background-color: #cccccc;
+}
+.content{
+  width: 80%;
+  float: left;
+  margin-top:10px;
+
+}
+.bottomDesc{
+  font-size: 15pt;
+  font-family: 'Showcard Gothic', cursive;
+  width: 50%;
+  border-right: 2px dashed #737373;
+  border-bottom: 2px dashed #737373;
+}
+.item{
+  width: 23%;
+  margin:0px 1% 10px 1%;
+  padding:7px;
+  float: left;
+  border-radius:10px;
+  font-family: 'segoe print';
+  background-color: #b7b7bf;
+  height:450px;
+
+}
+.item-desc{
+  font-size: 10pt;
+}
+.item:hover{
+  transform: scale(1.05);
+  box-shadow: 0px 0px 15px -1px rgba(112,112,112,1);
+  transition-duration: 0.2s;
+}
+.submit{
+  font-size:15pt;
+  background-color:#aaa;
+  padding:10px;
+  border-radius:13px;
+}
+.input{
+  border-radius:3px;
+  border: 1px solid #cccccc;
+  margin: 2px 0px;
+  height: 30px;
+  background: #ffffff !important;
+  outline: none;
+  width: 100%;
+}
+.submit:hover{
+  background-color: #ddd;
+}
+.sidebar{
+  width: 15%;
+  margin:10px 10px 10px 20px;
+  float: left;
+  padding: 10px;
+  background-color: #b7b7bf;
+}
+.sidebar ul{
+  list-style-type: none;
+  padding-left: 0px;
+  text-align: center;
+  font-size: 15pt;
+}
+.sidebar li:hover{
+  transform: scale(1.2);
+  transition-duration: 0.2s;
+  background-color: #cccccc;
+}
