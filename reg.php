@@ -1,5 +1,5 @@
 <?php
-  require 'includes/bd.php';
+  require 'includes/database.php';
   if(isset($_POST['email'])){
     $email=filter_var(trim($_POST['email']),FILTER_SANITIZE_STRING);
     $name=filter_var(trim($_POST['name']),FILTER_SANITIZE_STRING);

@@ -1,5 +1,5 @@
 <?php
-require("includes/bd.php");
+require("includes/database.php");
 $id=$_GET['item'];
 if(!isset($id)){
   header("Location: /");

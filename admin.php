@@ -1,5 +1,5 @@
 <?php
-require 'includes/bd.php';
+require 'includes/database.php';
 $userid=$_COOKIE["userid"];
 if(!isset($userid)) $userid=-1;
 $q=mysqli_query($link,"SELECT * FROM `users` WHERE `id`='$userid' AND `isAdmin`='1'");

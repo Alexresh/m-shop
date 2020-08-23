@@ -1,5 +1,5 @@
 <?php
-  require 'includes/bd.php';
+  require 'includes/database.php';
   if((isset($_POST['email']))&&(isset($_POST['pass']))){
     $email=filter_var(trim($_POST['email']),FILTER_SANITIZE_STRING);
 	

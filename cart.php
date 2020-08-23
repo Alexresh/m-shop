@@ -1,5 +1,5 @@
 <?php
-require 'includes/bd.php';
+require 'includes/database.php';
 $userid=$_COOKIE['userid'];
 
 $sumOfPrice=0;

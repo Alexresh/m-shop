@@ -1,4 +1,4 @@
-<?php include 'includes/bd.php';
+<?php include 'includes/database.php';
 $category=$_GET['cat'];
 if(isset($category)){
   $items=mysqli_query($link,"SELECT * FROM `items` WHERE `categoryid`='$category'");
