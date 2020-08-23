@@ -4,28 +4,29 @@ $userid=$_COOKIE["userid"];
 if(!isset($userid)) $userid=-1;
 $q=mysqli_query($link,"SELECT * FROM `users` WHERE `id`='$userid' AND `isAdmin`='1'");#чекаем, а админ ли чел, попавший на страницу
 $user=mysqli_fetch_assoc($q);
-if(isset($_POST['Uname'])){#если пришёл пост запрос с данными
-  $uid=$_POST['uid'];
-  $uname=$_POST['Uname'];
-  $udescription=$_POST['Udescription'];
-  $uprice=$_POST['Uprice'];
-  $umaterial=$_POST['Umaterial'];
-  $ucountry=$_POST['Ucountry'];
-  $ucatgories_id=$_POST['Ucategories_id'];
-  $uimg=$_POST['Uimg'];
-  #, то достаём все данные и забиваем их в базу данных
-  mysqli_query($link,"UPDATE `items` SET `name`='$uname',
-                                   `description`='$udescription',
-                                   `price`='$uprice',
-                                   `material`='$umaterial',
-                                   `country`='$ucountry',
-                                   `categoryId`='$ucatgories_id',
-                                   `img`='$uimg' WHERE `id`='$uid'");
-header('Location: /item.php?item='.$uid);#переходим обратно на страницу с товаром(от неё мы и пришли)
-}
 if(count($user)==0):#если юзер не админ, то выходим
   header("Location: /");
-else:?>
+else:
+  if(isset($_POST['Uname'])){#если пришёл пост запрос с данными на апдейт
+    $uid=$_POST['uid'];
+    $uname=$_POST['Uname'];
+    $udescription=$_POST['Udescription'];
+    $uprice=$_POST['Uprice'];
+    $umaterial=$_POST['Umaterial'];
+    $ucountry=$_POST['Ucountry'];
+    $ucatgories_id=$_POST['Ucategories_id'];
+    $uimg=$_POST['Uimg'];
+    #, то достаём все данные и забиваем их в базу данных
+    mysqli_query($link,"UPDATE `items` SET `name`='$uname',
+                                     `description`='$udescription',
+                                     `price`='$uprice',
+                                     `material`='$umaterial',
+                                     `country`='$ucountry',
+                                     `categoryId`='$ucatgories_id',
+                                     `img`='$uimg' WHERE `id`='$uid'");
+  header('Location: /item.php?item='.$uid);#переходим обратно на страницу с товаром(от неё мы и пришли)
+  }
+?>
 <!DOCTYPE html>
 <html lang="ru" dir="ltr">
   <head>
