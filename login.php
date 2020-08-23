@@ -4,7 +4,6 @@
     $email=filter_var(trim($_POST['email']),FILTER_SANITIZE_STRING);
 	
     $pass=filter_var(trim($_POST['pass']),FILTER_SANITIZE_STRING);
-	echo "SELECT * FROM `users` WHERE `email`='$email' AND `pass`='$pass'   ";
     $query = mysqli_query($link,"SELECT * FROM `users` WHERE `email`='$email' AND `pass`='$pass'") or die(mysqli_error());
     $user = mysqli_fetch_assoc($query);
     if(count($user)==0){
