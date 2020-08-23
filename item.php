@@ -1,20 +1,23 @@
 <?php
-require("includes/database.php");
+require("includes/database.php");#добавление всех переменных из файла
 $id=$_GET['item'];
+#если не пришёл get запрос, то возвращаемся на главную страницу
 if(!isset($id)){
   header("Location: /");
 }
+#запоминаем id юзера, если в куках ничё не нашли, то значит юзер не вошёл в акк и помечаем, что id у него -1
 $userid=$_COOKIE["userid"];
 if(!isset($userid)) $userid=-1;
 $q=mysqli_query($link,"SELECT * FROM `users` WHERE `id`='$userid' AND `isAdmin`='1'");
 $user=mysqli_fetch_assoc($q);
+#мы смотрим в бд, и если у юзера есть пометка, что он админ, то ставим в переменную true
 if(count($user)==0){
   $isAdmin=false;
 }
 else{
   $isAdmin=true;
-
 }
+#получаем всю инфу о предмете, id которого передался в get запросе
 $q=mysqli_query($link,"SELECT * FROM `items` WHERE `id`='$id'");
 $item=mysqli_fetch_assoc($q);
 ?>
@@ -32,6 +35,7 @@ $item=mysqli_fetch_assoc($q);
 </head>
 <body>
   <?php include 'includes/header.php';
+  #если чел зашёл под акком админа, то появляются разные плюшки для редактирования
   if($isAdmin){
     echo '<div style="margin:20px 35%; width:30%; text-align:center;">
             <form action="item.php?item='.$item['id'].'" method="post" enctype="multipart/form-data">
@@ -107,7 +111,7 @@ $item=mysqli_fetch_assoc($q);
     </tr>
     </table>
     <form id="add" action="add.php" method="post">
-    <input type="hidden" name="id" value="'. $item['id'] .'">
+    <input type="hidden" name="id" value="'.$item['id'].'">
     <button form="add" class="submit">В корзину</button>
     </form>
     </div>';
