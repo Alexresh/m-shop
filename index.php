@@ -22,13 +22,13 @@ if(isset($category)){
     <?php include 'includes/slider.html'; ?>
     <div class="sidebar"id="thi">
       <ul>
-        <li><a href="/#thi">Все товары</a></li>
-        <li><a href="?cat=1#thi">Кроссовки</a></li>
-        <li><a href="?cat=2#thi">Куртки</a></li>
-        <li><a href="?cat=3#thi">Свитера</a></li>
-        <li><a href="?cat=4#thi">Рубашки</a></li>
-        <li><a href="?cat=5#thi">Парки</a></li>
-        <li ><a href="?cat=6#thi">Аксессуары</a></li>
+        <li><a href="/">Все товары</a></li>
+        <li><a href="?cat=1">Кроссовки</a></li>
+        <li><a href="?cat=2">Куртки</a></li>
+        <li><a href="?cat=3">Свитера</a></li>
+        <li><a href="?cat=4">Рубашки</a></li>
+        <li><a href="?cat=5">Парки</a></li>
+        <li ><a href="?cat=6">Аксессуары</a></li>
       </ul>
     </div>
     <div class="content">
