@@ -2,9 +2,9 @@
 require 'includes/database.php';
 $userid=$_COOKIE["userid"];
 if(!isset($userid)) $userid=-1;
-$q=mysqli_query($link,"SELECT * FROM `users` WHERE `id`='$userid' AND `isAdmin`='1'");
+$q=mysqli_query($link,"SELECT * FROM `users` WHERE `id`='$userid' AND `isAdmin`='1'");#чекаем, а админ ли чел, попавший на страницу
 $user=mysqli_fetch_assoc($q);
-if(isset($_POST['Uname'])){
+if(isset($_POST['Uname'])){#если пришёл пост запрос с данными
   $uid=$_POST['uid'];
   $uname=$_POST['Uname'];
   $udescription=$_POST['Udescription'];
@@ -13,6 +13,7 @@ if(isset($_POST['Uname'])){
   $ucountry=$_POST['Ucountry'];
   $ucatgories_id=$_POST['Ucategories_id'];
   $uimg=$_POST['Uimg'];
+  #, то достаём все данные и забиваем их в базу данных
   mysqli_query($link,"UPDATE `items` SET `name`='$uname',
                                    `description`='$udescription',
                                    `price`='$uprice',
@@ -20,9 +21,9 @@ if(isset($_POST['Uname'])){
                                    `country`='$ucountry',
                                    `categoryId`='$ucatgories_id',
                                    `img`='$uimg' WHERE `id`='$uid'");
-header('Location: /item.php?item='.$uid);
+header('Location: /item.php?item='.$uid);#переходим обратно на страницу с товаром(от неё мы и пришли)
 }
-if(count($user)==0):
+if(count($user)==0):#если юзер не админ, то выходим
   header("Location: /");
 else:?>
 <!DOCTYPE html>
@@ -57,6 +58,7 @@ else:?>
         <button>Загрузить</button>
       </form>
       <?php
+        #если пришёл файл, то пробуем загрузить его на сервер
         $filePath  = $_FILES['upload']['tmp_name'];
         if(isset($filePath)){
           if (!move_uploaded_file($filePath, __DIR__ . '/img/' . $_FILES['upload']['name'])) {
@@ -66,6 +68,7 @@ else:?>
       ?>
     </div>
     <?php
+    #если пришли данные на добавление товара, то добавляем или выводим ошибку
       if (isset($_POST["name"])) {
         $name=$_POST['name'];
         $description=$_POST['description'];
@@ -85,6 +88,7 @@ else:?>
          <input type="submit" value="Удалить">
        </form>
        <?php
+        #если пришёл id удаления, то удаляем
         if(isset($_POST['delid'])){
           $delid=$_POST['delid'];
           mysqli_query($link,"DELETE FROM `items` WHERE `name`='$delid'");
