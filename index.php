@@ -1,5 +1,9 @@
-<?php include 'includes/database.php';
+<?php include 'includes/database.php';// добавление всех переменных из файла
 $category=$_GET['cat'];
+#
+#если приходит get запрос с параметром cat, то выводим только те вещи,
+#которые относятся к данной категории, иначе все вещи
+#
 if(isset($category)){
   $items=mysqli_query($link,"SELECT * FROM `items` WHERE `categoryid`='$category'");
 }else{
@@ -18,8 +22,8 @@ if(isset($category)){
     <title>M-shop</title>
   </head>
   <body>
-    <?php include 'includes/header.php'; ?>
-    <?php include 'includes/slider.html'; ?>
+    <?php include 'includes/header.php'; #добавляем всё из заголовка?>
+    <?php include 'includes/slider.html'; #добавляем слайдер?>
     <div class="sidebar"id="thi">
       <ul>
         <li><a href="/#thi">Все товары</a></li>
@@ -33,19 +37,22 @@ if(isset($category)){
     </div>
     <div class="content">
       <?php
+      #
+      #Перебераем каждую полученную вещь из бд и вставляем её данные в блок <div>
+      #
       while($item = mysqli_fetch_assoc($items)) {
         echo '
-        <div class="item" onclick="item('. $item['id'] .')">
-          <img src="img/'. $item['img'] .'" width="100%" height="auto">
+        <div class="item" onclick="item('.$item['id'].')">
+          <img src="img/'.$item['img'].'" width="100%" height="auto">
           <div class="item-desc">
-            <h3>'. $item['name'].'</h3>
-            <p>' .$item['material'] . '</p>
-            <p><b>'. $item['price'].'₽</b></p>
+            <h3>'.$item['name'].'</h3>
+            <p>'.$item['material'].'</p>
+            <p><b>'.$item['price'].'₽</b></p>
           </div>
         </div>';
       }
        ?>
     </div>
-    <?php include 'includes/footer.php'; ?>
+    <?php include 'includes/footer.php'; #добавляем футер ?>
   </body>
 </html>
