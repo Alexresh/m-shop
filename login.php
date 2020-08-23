@@ -1,16 +1,17 @@
 <?php
-  require 'includes/bd.php';
+  require 'includes/database.php';
   if((isset($_POST['email']))&&(isset($_POST['pass']))){
+    #если в пост запросе пришли данные email и pass, то ищем их в бд
     $email=filter_var(trim($_POST['email']),FILTER_SANITIZE_STRING);
 	
     $pass=filter_var(trim($_POST['pass']),FILTER_SANITIZE_STRING);
     $query = mysqli_query($link,"SELECT * FROM `users` WHERE `email`='$email' AND `pass`='$pass'") or die(mysqli_error());
     $user = mysqli_fetch_assoc($query);
-    if(count($user)==0){
+    if(count($user)==0){#ес ничё не нашли, то сообщение
       echo 'Такой пользователь не найден! <a href="">Вернуться</>';
-	  
       exit();
     }
+    #устанавливаем куки, чтобы из любой страницы сайта знать о аккаунте
     setcookie('userid',$user['id'],time()+3600,"/");
     setcookie('username',$user['name'],time()+3600,"/");
     header('Location: /');

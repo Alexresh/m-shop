@@ -2,19 +2,22 @@
 <div class="head" id="up">
   <a href="/" id="logo">M-shop</a>
   <div id="auth">
-    <?php if (isset($_COOKIE['username'])): ?>
+    <?php #если в куках есть данные о юзере(он в своём аккаунте), то:...
+    if (isset($_COOKIE['username'])): ?>
       <?php
-        $userid=$_COOKIE["userid"];
+        $userid=$_COOKIE["userid"];#запоминаем его id
         if(isset($userid)){
-        $q=mysqli_query($link,"SELECT * FROM `users` WHERE `id`='$userid' AND `isAdmin`='1'");
-        $user=mysqli_fetch_assoc($q);
-        if(count($user)!=0)
-          echo '<a href="admin.php">Админ-панель</a>';
+          $q=mysqli_query($link,"SELECT * FROM `users` WHERE `id`='$userid' AND `isAdmin`='1'");#узнаём из бд, админ ли он
+          $user=mysqli_fetch_assoc($q);
+          #если этот юзер ещё и админ, то даём ему ссыль на админ панель
+          if(count($user)!=0)
+            echo '<a href="admin.php">Админ-панель</a>';
         }
       ?>
-    <span style="font-family: 'Courier Prime', monospace; color:#6c6c6c;margin-right: 20px;"><?php echo $_COOKIE['username']; ?></span> <a href="logout.php">Выход</a>
+    <span style="font-family: 'Courier Prime', monospace; color:#6c6c6c;margin-right: 20px;"><?php echo $_COOKIE['username'];#выводим имя юзера ?></span> 
+    <a href="logout.php">Выход</a>
 
-  <?php else: ?>
+  <?php else: #если в куках мы не нашли данных, то... ?>
     <a href="reg.php">Регистрация</a> <a href="login.php">Вход</a>
     <?php endif; ?>
   </div>
